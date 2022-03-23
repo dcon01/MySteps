@@ -5,13 +5,12 @@
     <string name="step_goal">Step Goal:</string>
     <string name="calories_burned">Calories Burned:</string>
     <string name="home">home</string>
-    <string name="weight_kg">Weight (kg):</string>
-    <string name="enter_weight">Enter weight</string>
-    <string name="enter_height">enter_height</string>
     <string name="height_cm">Height (cm):</string>
     <string name="slow">Slow</string>
     <string name="average">Average</string>
     <string name="fast">Fast</string>
     <string name="speed">Speed:</string>
     <string name="save">Save</string>
+    <string name="weight_kg">weight_kg:</string>
+    <string name="today_s_goal">Today\'s Goal:</string>
 </resources>

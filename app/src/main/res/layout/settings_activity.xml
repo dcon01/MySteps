@@ -9,11 +9,12 @@
 
 
     <Button
-        android:id="@+id/home"
+        android:onClick="homeClicked"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/home"
-        android:layout_gravity="end"/>
+        android:layout_gravity="end"
+        tools:ignore="OnClick,UsingOnClickInXml" />
 
     <TableRow
         android:layout_width="match_parent"
@@ -32,7 +33,6 @@
             android:layout_height="wrap_content"
             android:ems="12"
             android:inputType="number"
-            android:text="@string/enter_weight"
             android:autofillHints="weight in kg" />
 
     </TableRow>
@@ -54,7 +54,6 @@
             android:layout_height="wrap_content"
             android:ems="12"
             android:inputType="number"
-            android:text="@string/enter_height"
             android:autofillHints="weight in cm" />
 
     </TableRow>
@@ -67,7 +66,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Today's Goal: " />
+            android:text="@string/today_s_goal" />
 
 
         <EditText
@@ -76,7 +75,6 @@
             android:layout_height="wrap_content"
             android:ems="12"
             android:inputType="number"
-            android:text="Total of Steps"
             android:autofillHints="steps" />
 
     </TableRow>
@@ -94,7 +92,8 @@
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/radioGroup">
+            android:id="@+id/speedRadio"
+            android:checkedButton="@+id/Average">
 
             <RadioButton
                 android:id="@+id/Slow"
@@ -118,7 +117,7 @@
 
     </TableRow>
     <Button
-        android:id="@+id/save"
+        android:onClick="saveClicked"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/save"
