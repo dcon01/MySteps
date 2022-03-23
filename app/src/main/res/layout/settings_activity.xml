@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:text="@string/home"
         android:layout_gravity="end"
-        tools:ignore="OnClick,UsingOnClickInXml" />
+        tools:ignore="OnClick" />
 
     <TableRow
         android:layout_width="match_parent"
@@ -93,25 +93,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/speedRadio"
-            android:checkedButton="@+id/Average">
+            android:checkedButton="@+id/Walk">
 
             <RadioButton
-                android:id="@+id/Slow"
+                android:id="@+id/Walk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/slow" />
+                android:text="@string/walk" />
 
             <RadioButton
-                android:id="@+id/Average"
+                android:id="@+id/Jog"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/average" />
+                android:text="@string/jog" />
 
             <RadioButton
-                android:id="@+id/Fast"
+                android:id="@+id/Run"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/fast" />
+                android:text="@string/run" />
         </RadioGroup>
 
 

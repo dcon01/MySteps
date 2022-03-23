@@ -28,4 +28,12 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
+
+    public void goClicked(View view) {
+        //TODO
+    }
+
+    public void stopClicked(View view) {
+        //TODO
+    }
 }
