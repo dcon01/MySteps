@@ -1,26 +1,28 @@
 package com.example.mysteps;
+import android.widget.Toast;
+import androidx.annotation.NonNull;
 
-public class Steps {
-    private int goal, height,weight;
-    private String speed;
-    int walk = 2;
-    int joj = 2;
-    int run = 6;
+class Steps {
+    private int goalSteps;
+    int steps = 0;
 
+    public Steps() {
 
-    public void calculateCalories(){
-        //TODO
-        // Walk = 1.4 m per second
-        caloriesMinute = 0.035 * weight;
-        velocity = speed * speed;
-
-        }
-
-    public void countSteps() {
-        //TODO
     }
 
-
+    public boolean checkGoal(int steps, int goal){
+        System.out.println("Called Steps.CheckSteps - steps: " + steps);
+        System.out.println("Called Steps.CheckGoal - goal: " + goal);
+        if(steps > goal){
+            System.out.println("steps.checkGoal: You have reached your goal");
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }
+
+
 
 

@@ -14,49 +14,7 @@
         android:layout_height="wrap_content"
         android:text="@string/home"
         android:layout_gravity="end"
-        tools:ignore="OnClick" />
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/weight_kg" />
-
-
-        <EditText
-            android:id="@+id/weight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="12"
-            android:inputType="number"
-            android:autofillHints="weight in kg" />
-
-    </TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/height_cm" />
-
-
-        <EditText
-            android:id="@+id/height"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="12"
-            android:inputType="number"
-            android:autofillHints="weight in cm" />
-
-    </TableRow>
+        tools:ignore="OnClick,UsingOnClickInXml" />
 
     <TableRow
         android:layout_width="match_parent"
@@ -75,53 +33,19 @@
             android:layout_height="wrap_content"
             android:ems="12"
             android:inputType="number"
-            android:autofillHints="steps" />
+            android:autofillHints="steps"
+            tools:ignore="LabelFor"/>
 
     </TableRow>
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/speed" />
-
-        <RadioGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/speedRadio"
-            android:checkedButton="@+id/Walk">
-
-            <RadioButton
-                android:id="@+id/Walk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/walk" />
-
-            <RadioButton
-                android:id="@+id/Jog"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/jog" />
-
-            <RadioButton
-                android:id="@+id/Run"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/run" />
-        </RadioGroup>
-
-
-    </TableRow>
     <Button
         android:onClick="saveClicked"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/save"
-        android:layout_gravity="end"/>
+        android:layout_gravity="end"
+        tools:ignore="UsingOnClickInXml" />
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

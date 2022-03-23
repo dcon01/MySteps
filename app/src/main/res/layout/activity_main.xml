@@ -29,6 +29,12 @@
         <TextView
             android:id="@+id/show_steps"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" "/>
+
+        <TextView
+            android:id="@+id/info"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
     </TableRow>
@@ -46,43 +52,10 @@
         <TextView
             android:id="@+id/show_goal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-    </TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
-
-        <TextView
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/calories_burned" />
-
-        <TextView
-            android:id="@+id/show_calories"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:text=" "/>
 
     </TableRow>
-
-    <Button
-        android:onClick="goClicked"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/go"
-        android:layout_gravity="end"
-        tools:ignore="OnClick,UsingOnClickInXml" />
-
-    <Button
-        android:onClick="stopClicked"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/stop"
-        android:layout_gravity="end"
-        tools:ignore="OnClick,UsingOnClickInXml" />
-
 
 
 

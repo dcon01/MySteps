@@ -12,6 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MySteps">
         <activity android:name=".SettingsActivity" />
+
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -21,6 +23,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
     </application>
 
 </manifest>
