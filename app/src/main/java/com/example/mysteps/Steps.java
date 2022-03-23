@@ -1,15 +1,11 @@
 package com.example.mysteps;
-import android.widget.Toast;
-import androidx.annotation.NonNull;
 
 class Steps {
-    private int goalSteps;
-    int steps = 0;
-
     public Steps() {
 
     }
 
+    //receive parameters from main activity and check if goal has been met
     public boolean checkGoal(int steps, int goal){
         System.out.println("Called Steps.CheckSteps - steps: " + steps);
         System.out.println("Called Steps.CheckGoal - goal: " + goal);

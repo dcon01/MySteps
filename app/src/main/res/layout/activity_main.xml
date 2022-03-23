@@ -7,7 +7,6 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-
     <Button
         android:onClick="settingsClicked"
         android:layout_width="wrap_content"
@@ -30,14 +29,16 @@
             android:id="@+id/show_steps"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" "/>
-
-        <TextView
-            android:id="@+id/info"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:text="@string/_0"/>
 
     </TableRow>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:progress="0"/>
 
     <TableRow
         android:layout_width="match_parent"
@@ -53,10 +54,7 @@
             android:id="@+id/show_goal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" "/>
-
+            android:text="@string/_0"/>
     </TableRow>
-
-
 
 </androidx.appcompat.widget.LinearLayoutCompat>

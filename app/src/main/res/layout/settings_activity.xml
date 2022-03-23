@@ -7,7 +7,6 @@
     android:orientation="vertical"
     tools:context=".SettingsActivity">
 
-
     <Button
         android:onClick="homeClicked"
         android:layout_width="wrap_content"
@@ -24,8 +23,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/today_s_goal" />
-
+            android:text="@string/enter_your_step_goal" />
 
         <EditText
             android:id="@+id/steps_goal"
@@ -35,9 +33,7 @@
             android:inputType="number"
             android:autofillHints="steps"
             tools:ignore="LabelFor"/>
-
     </TableRow>
-
 
     <Button
         android:onClick="saveClicked"
@@ -46,6 +42,5 @@
         android:text="@string/save"
         android:layout_gravity="end"
         tools:ignore="UsingOnClickInXml" />
-
 
 </androidx.appcompat.widget.LinearLayoutCompat>

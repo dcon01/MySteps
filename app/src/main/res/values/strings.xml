@@ -12,10 +12,6 @@
     <string name="speed">Speed:</string>
     <string name="save">Save</string>
     <string name="weight_kg">weight_kg:</string>
-    <string name="today_s_goal">Today\'s Goal:</string>
-    <string name="go">Go</string>
-    <string name="stop">Stop</string>
-    <string name="walk">Walk</string>
-    <string name="jog">Jog</string>
-    <string name="run">Run</string>
+    <string name="enter_your_step_goal">Enter your step goal:</string>
+    <string name="_0">0</string>
 </resources>

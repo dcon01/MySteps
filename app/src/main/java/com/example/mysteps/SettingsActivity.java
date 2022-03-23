@@ -4,16 +4,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-
-
 public class SettingsActivity extends AppCompatActivity {
-    int goal;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +20,7 @@ public class SettingsActivity extends AppCompatActivity {
         EditText goalInput = findViewById(R.id.steps_goal);
         String goal = goalInput.getText().toString();
 
-
+        //Error check user input and pass to MainActivity
         if (validateUserInput(goal)) {
             Toast.makeText(this, "Saved!", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, MainActivity.class);
@@ -46,6 +40,7 @@ public class SettingsActivity extends AppCompatActivity {
         }
         return isCorrect;
     }
+
     @Override
     public void onBackPressed() {
         saveClicked(null);
@@ -54,10 +49,6 @@ public class SettingsActivity extends AppCompatActivity {
     public void homeClicked(View view) {
         saveClicked(null);
     }
-//    @Override
-//    protected void onSaveInstanceState(@NonNull Bundle outState) {
-//        super.onSaveInstanceState(outState);
-//        outState.putInt("value", goal);
-//    }
+
 
 }
