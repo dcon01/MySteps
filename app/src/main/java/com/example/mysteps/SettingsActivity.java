@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 public class SettingsActivity extends AppCompatActivity {
+    public static final int SETTINGS_REQUEST = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,10 +24,12 @@ public class SettingsActivity extends AppCompatActivity {
         //Error check user input and pass to MainActivity
         if (validateUserInput(goal)) {
             Toast.makeText(this, "Saved!", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(this, MainActivity.class);
+
+            Intent intent = new Intent();
             intent.putExtra("goal" , goal);
             setResult(RESULT_OK, intent);
-            startActivity(intent);
+            finish();
+            //startActivity(intent);
         } else {
             Toast.makeText(this, "Please check your inputs", Toast.LENGTH_SHORT).show();
         }

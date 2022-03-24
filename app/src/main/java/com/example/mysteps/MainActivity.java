@@ -1,9 +1,4 @@
 package com.example.mysteps;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -16,20 +11,28 @@ import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import com.mikhaellopez.circularprogressbar.CircularProgressBar;
+
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
     private Steps steps;
-    private TextView showSteps;
-    private ProgressBar progressBar;
-    private String goalSteps;
     private SensorManager sensorManager;
     private Sensor sensor;
-    private int myGoal;
-    boolean running = false;
-    int startupCount = 0;
+    private TextView showSteps;
+    private TextView displayGoal;
+    private TextView percentageView;
+    private CircularProgressBar circularProgressBar;
+    private int currentGoal = 0;
+    int mySteps = 0;
+    public static final int MAIN_REQUEST = 2;
 
     //check for or ask for permission to use sensors
     private final ActivityResultLauncher<String> requestPermissionsLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(),
@@ -38,8 +41,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                     setupSensor();
         }
                 else {
-                    //TODO add toast
-                    System.out.println("This app will not work without sensor permission");
+                    Toast.makeText(this, "No sensor found", Toast.LENGTH_SHORT).show();
                 }
     });
 
@@ -48,10 +50,21 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        TextView displayGoal = findViewById(R.id.show_goal);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+
+        percentageView = findViewById(R.id.percentage);
+        circularProgressBar = findViewById(R.id.yourCircularProgressbar);
+        displayGoal = findViewById(R.id.show_goal);
         showSteps = findViewById(R.id.show_steps);
-        steps = new Steps();
+        if(savedInstanceState == null) {
+            System.out.println("saved instance state is null");
+            steps = new Steps();
+        }
+        else{
+            System.out.println("saved instance not null: " + savedInstanceState) ;
+            steps = new Steps(savedInstanceState.getString("value"));
+            mySteps = savedInstanceState.getInt("mySteps");
+            currentGoal = savedInstanceState.getInt("currentGoal");
+            }
 
         //check for or ask for permission to use sensors
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACTIVITY_RECOGNITION) == PackageManager.PERMISSION_GRANTED){
@@ -59,19 +72,29 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         } else {
             requestPermissionsLauncher.launch(Manifest.permission.ACTIVITY_RECOGNITION);
         }
-        System.out.println("OnCreate called: ");
+    }
 
-        // collect goal parameter from SettingsActivity
-        Bundle extras = getIntent().getExtras();
-        if (extras != null){
-            goalSteps = extras.getString("goal");
-            displayGoal.setText(goalSteps);
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        System.out.println("OnActivity Called");
+        super.onActivityResult(requestCode, resultCode, data);
+            if (resultCode == RESULT_OK) {
+                System.out.println("1");
+                if (data != null) {
+                    String goalFromSettings = data.getStringExtra("goal");
+                    displayGoal.setText(goalFromSettings);
+                    currentGoal = Integer.parseInt(goalFromSettings);
+                    circularProgressBar.setProgressMax(currentGoal);
+                }
+            }
         }
 
-        // convert goal parameter to int
-        if(goalSteps != null) {
-            myGoal = Integer.parseInt(goalSteps);
-        }
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("value", steps.toString());
+        outState.putInt("mySteps", mySteps);
+        outState.putInt("currentGoal", currentGoal);
     }
 
     private void setupSensor() {
@@ -79,13 +102,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         sensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
         if(sensor == null) {
-            //TODO create toast
-            System.out.println("[setupSensor]: no sensor found");
-            //hasSensor = false;
-        }else {
-            //TODO create toast
-            System.out.println("[setupSensor]: sensor found");
-
+            Toast.makeText(this, "No sensor found", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -110,35 +127,27 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
 
-        //make a point to start count
         System.out.println("onSensorChanged: " + sensorEvent.values[0]);
-        if(!running){
-            startupCount = (int) sensorEvent.values[0];
-            System.out.println("onSensorChanged: startupCount is - " + startupCount);
-            running = true;
-        }
 
-        //make a point for current step count
-        int currentCount = (int) sensorEvent.values[0];
-        System.out.println("onSensorChanged: currentCount is - " + currentCount);
+        //call Steps count steps to get current step
+        mySteps = steps.countSteps((int) sensorEvent.values[0]);
 
-        //calculate steps and set text
-        int mySteps = (currentCount - startupCount);
-        System.out.println("onSensorChanged: mySteps is - " + mySteps);
+        //show steps on screen
         showSteps.setText(Integer.toString(mySteps));
 
-        //Attempting to create a progress bar
-        if(goalSteps != null) {
-            int percentage = ((mySteps / myGoal) * 100);
-            progressBar.setProgress(percentage);
+        //call steps to get percentage
+        System.out.println(currentGoal + mySteps);
+        int percentage = steps.returnPercentage(currentGoal, mySteps);
 
-            //checking if the goal is met
-            if (steps.checkGoal(mySteps, myGoal)){
-                System.out.println("onSensorChanged: Call to step.check returned true");
-                Toast.makeText(this, "Congratulations you hit your goal!", Toast.LENGTH_SHORT).show();
-            }
-            System.out.println("OnSensorChange calling steps.check goal with mysteps = "+ mySteps + " & mygoal = " + myGoal);
-            //TODO rotating the screen breaks counts
+        //show percentage on screen
+        percentageView.setText(percentage + "%");
+
+        //show progress bar on screen
+        circularProgressBar.setProgressWithAnimation(mySteps, 1000L);
+
+        //checking if the goal is met
+        if (steps.checkGoal(mySteps, currentGoal)){
+            Toast.makeText(this, "Congratulations you hit your goal!", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -148,7 +157,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     }
 
     public void settingsClicked(View view) {
-        Intent intent = new Intent(this, SettingsActivity.class);
-        startActivity(intent);
+        final Intent intent = new Intent(this, SettingsActivity.class);
+        startActivityForResult(intent, MAIN_REQUEST);
     }
 }

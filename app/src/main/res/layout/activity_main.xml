@@ -4,8 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".MainActivity">
+
 
     <Button
         android:onClick="settingsClicked"
@@ -15,46 +17,81 @@
         android:layout_gravity="end"
         tools:ignore="UsingOnClickInXml" />
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="15sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/current_steps" />
-
-        <TextView
-            android:id="@+id/show_steps"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/_0"/>
-
-    </TableRow>
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
+    <TextView
+        android:textSize="50sp"
+        android:textColor="@color/darkBlue"
+        android:id="@+id/show_steps"
+        android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:progress="0"/>
+        android:textAlignment="center"
+        android:text="@string/_0"/>
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
+    <TextView
+        android:textSize="25sp"
+        android:textColor="@color/darkBlue"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="@string/current_steps" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/step_goal" />
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="50sp" />
 
-        <TextView
-            android:id="@+id/show_goal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/_0"/>
-    </TableRow>
+    <TextView
+        android:id="@+id/show_goal"
+        android:textSize="50sp"
+        android:textColor="@color/darkBlue"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="@string/_0"/>
+
+    <TextView
+        android:textSize="25sp"
+        android:textColor="@color/darkBlue"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="@string/step_goal" />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="50sp" />
+
+    <TextView
+        android:id="@+id/percentage"
+        android:textSize="50sp"
+        android:textColor="@color/darkBlue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:text="@string/_Percentage"/>
+
+    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+        android:id="@+id/yourCircularProgressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:cpb_background_progressbar_color="@color/lightBlue"
+        app:cpb_background_progressbar_width="5dp"
+        app:cpb_progress_direction="to_right"
+        app:cpb_progressbar_color="@color/darkBlue"
+        app:cpb_progressbar_width="20dp"
+        app:cpb_progress="0"
+        app:cpb_round_border="false"
+        />
+
+
+
 
 </androidx.appcompat.widget.LinearLayoutCompat>
