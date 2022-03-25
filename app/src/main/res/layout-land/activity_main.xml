@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    tools:context=".MainActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Space
+                android:layout_width="50sp"
+                android:layout_height="50sp" />
+
+            <TableRow>
+
+
+                <TextView
+                    android:textSize="25sp"
+                    android:textColor="@color/darkBlue"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="viewStart"
+                    android:text="@string/current_steps" />
+
+                <Space
+                    android:layout_width="50sp"
+                    android:layout_height="50sp" />
+
+
+                <TextView
+                    android:textSize="25sp"
+                    android:textColor="@color/darkBlue"
+                    android:id="@+id/show_steps"
+                    android:layout_gravity="start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="viewStart"
+                    android:text="@string/_0"/>
+
+
+
+            </TableRow>
+        </TableLayout>
+
+        <Space
+            android:layout_width="50sp"
+            android:layout_height="50sp" />
+
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TableRow>
+
+                <TextView
+                    android:textSize="25sp"
+                    android:textColor="@color/darkBlue"
+                    android:layout_gravity="start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
+                    android:text="@string/step_goal" />
+
+                    <Space
+                        android:layout_width="50sp"
+                        android:layout_height="50sp" />
+
+                <TextView
+                    android:id="@+id/show_goal"
+                    android:textSize="25sp"
+                    android:textColor="@color/darkBlue"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
+                    android:text="@string/_0"/>
+            </TableRow>
+        </TableLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:onClick="settingsClicked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/settings"
+            android:layout_gravity="end"
+            tools:ignore="UsingOnClickInXml" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end">
+
+
+            <TextView
+                android:id="@+id/percentage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/_Percentage"
+                android:textColor="@color/darkBlue"
+                android:textSize="25sp" />
+
+            <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                android:id="@+id/yourCircularProgressbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                app:cpb_background_progressbar_color="@color/lightBlue"
+                app:cpb_background_progressbar_width="5dp"
+                app:cpb_progress="0"
+                app:cpb_progress_direction="to_right"
+                app:cpb_progressbar_color="@color/darkBlue"
+                app:cpb_progressbar_width="20dp"
+                app:cpb_round_border="false" />
+
+
+
+        </RelativeLayout>
+
+
+
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

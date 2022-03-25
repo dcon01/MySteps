@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        System.out.println("onCreate Called");
+
         percentageView = findViewById(R.id.percentage);
         circularProgressBar = findViewById(R.id.yourCircularProgressbar);
         displayGoal = findViewById(R.id.show_goal);
@@ -61,9 +63,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
         else{
             System.out.println("saved instance not null: " + savedInstanceState) ;
-            steps = new Steps(savedInstanceState.getString("value"));
-            mySteps = savedInstanceState.getInt("mySteps");
-            currentGoal = savedInstanceState.getInt("currentGoal");
+//            steps = new Steps(savedInstanceState.getString("value"));
+//            mySteps = savedInstanceState.getInt("mySteps");
+//            currentGoal = savedInstanceState.getInt("currentGoal");
             }
 
         //check for or ask for permission to use sensors
